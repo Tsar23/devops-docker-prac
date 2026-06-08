@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # Моніторинг самого себе
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Моніторинг нашого цільового вебдодатка
+  - job_name: 'web-application'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['192.168.1.100:80'] # Замість цієї IP-адреси на практиці підставляється реальна адреса сервера
